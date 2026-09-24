@@ -2,7 +2,7 @@
 "use strict";
 
 /* LIMITVERSE — cliente ligero. Las respuestas permanecen en el servidor. */
-const API_BASE = window.LIMITVERSE_API || "limitverse-api.clashcreative123.workers.dev";
+const API_BASE = window.LIMITVERSE_API || "https://limitverse-api.clashcreative123.workers.dev";
 let questions = [];
 let bossTotal = 0;
 

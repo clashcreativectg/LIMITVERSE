@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LIMITVERSE 2.0 - Juego educativo interactivo para aprender límites matemáticos.">
+  <title>LIMITVERSE 2.0 | El Universo de los Límites</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div id="app">
+    <div class="stars"></div><div class="grid-overlay"></div>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">∞</div>
+        <div><span class="eyebrow">ACADEMIA INTERDIMENSIONAL</span><h1>LIMIT<span>VERSE</span></h1><p>El Universo de los Límites · Edición 2.0</p></div>
+      </div>
+      <div class="top-stats">
+        <div class="stat"><span>RANGO</span><b>🏅 <i id="rankMini">Cadete</i></b></div>
+        <div class="stat"><span>VIDAS</span><b>❤️ <i id="lives">4</i></b></div>
+        <div class="stat"><span>XP</span><b>⭐ <i id="score">0</i></b></div>
+        <div class="stat"><span>MONEDAS</span><b>🪙 <i id="coins">0</i></b></div>
+        <div class="stat combo-stat"><span>COMBO</span><b>🔥 <i id="combo">0</i></b></div>
+      </div>
+    </header>
+
+    <main>
+      <section id="homeScreen" class="screen active">
+        <div class="hero-card">
+          <div class="hero-visual">
+            <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
+            <div class="hero-orb"><span>∞</span></div>
+            <div class="floating-chip chip-1">x → a</div><div class="floating-chip chip-2">0/0</div><div class="floating-chip chip-3">√x</div>
+          </div>
+          <div class="hero-copy">
+            <span class="badge">🚀 MISIÓN MATEMÁTICA 2.0</span>
+            <h2>Domina los límites.<br><span>Conquista el universo.</span></h2>
+            <p>Ahora los mundos tienen más desafíos, nuevas mecánicas, niveles progresivos y un Guardián Final de <strong>5 fases</strong>.</p>
+            <div class="feature-row"><span>✦ 6 mundos</span><span>✦ 30 desafíos</span><span>✦ 5 fases finales</span></div>
+            <button id="startBtn" class="primary-btn">🚀 COMENZAR MISIÓN <span>→</span></button>
+            <p class="small-note">Sin instalación · Computador y celular · Dificultad progresiva</p>
+          </div>
+        </div>
+        <div class="how-grid">
+          <article><span>01</span><h3>Explora</h3><p>Avanza desde sustitución hasta límites laterales y mixtos.</p><div class="mini-bar"><i style="width:28%"></i></div></article>
+          <article><span>02</span><h3>Resuelve</h3><p>Encadena respuestas correctas para multiplicar tu XP y monedas.</p><div class="mini-bar"><i style="width:58%"></i></div></article>
+          <article><span>03</span><h3>Conquista</h3><p>Completa los seis mundos y enfréntate al Guardián del Infinito.</p><div class="mini-bar"><i style="width:92%"></i></div></article>
+        </div>
+      </section>
+
+      <section id="mapScreen" class="screen">
+        <div class="section-heading">
+          <div><span class="eyebrow">SECTOR 01 · MAPA ESTELAR</span><h2>Selecciona un mundo</h2><p>La dificultad aumenta en cada sector.</p></div>
+          <button id="resetBtn" class="ghost-btn">↻ Reiniciar misión</button>
+        </div>
+        <div id="worldMap" class="world-map"></div>
+      </section>
+
+      <section id="gameScreen" class="screen">
+        <div class="game-head">
+          <div><span id="zoneTag" class="badge">ZONA</span><h2 id="zoneTitle">Desafío</h2></div>
+          <div class="question-count" id="questionCount">1 / 5</div>
+        </div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        <div class="challenge-card">
+          <div class="challenge-top"><span class="signal"></span><span id="questionLabel" class="question-label">RESUELVE</span><span class="challenge-tag">DESAFÍO</span></div>
+          <h3 id="questionText">Pregunta</h3>
+          <div class="formula-wrap"><span class="formula-label">EXPRESIÓN</span><div id="formula" class="formula">lim...</div></div>
+          <div id="answers" class="answers"></div>
+          <div id="feedback" class="feedback" aria-live="polite"></div>
+          <div id="explanation" class="explanation"></div>
+          <div class="game-actions">
+            <button id="hintBtn" class="ghost-btn">💡 Pista <span>5 🪙</span></button>
+            <button id="skipBtn" class="ghost-btn danger-btn">⏭ Saltar <span>−1 ❤️</span></button>
+            <button id="challengeBtn" class="ghost-btn">⚡ Modo experto</button>
+          </div>
+          <div class="challenge-footer">
+            <span>⏱ Tiempo: <strong id="timer">45</strong>s</span>
+            <span>🎯 Racha máxima: <strong id="streakMini">0</strong></span>
+            <span id="modeLabel">Modo normal</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="bossScreen" class="screen">
+        <div class="boss-card">
+          <div class="boss-stars">✦ ✦ ✦</div><div class="boss-core">∞</div>
+          <span class="badge danger">⚠ JEFE FINAL · AMENAZA ÉLITE</span>
+          <h2>EL GUARDIÁN<br><span>DEL INFINITO</span></h2>
+          <p>Has atravesado seis sectores. Ahora debes superar <strong>5 fases</strong> con problemas más exigentes.</p>
+          <div class="boss-lives" id="bossLives">❤️ ❤️ ❤️ ❤️</div>
+          <button id="bossStartBtn" class="primary-btn boss-btn">⚔️ ENFRENTAR AL JEFE</button>
+        </div>
+      </section>
+
+      <section id="resultScreen" class="screen">
+        <div class="result-card">
+          <div id="resultIcon" class="result-icon">🏆</div><span class="eyebrow">RESULTADO DE LA MISIÓN</span>
+          <h2 id="resultTitle">Universo conquistado</h2><div id="rank" class="rank">S</div>
+          <div class="result-grid">
+            <div><span>XP TOTAL</span><b id="finalScore">0</b></div><div><span>PRECISIÓN</span><b id="accuracy">0%</b></div>
+            <div><span>MEJOR COMBO</span><b id="bestCombo">0x</b></div><div><span>MONEDAS</span><b id="finalCoins">0</b></div>
+          </div>
+          <p id="resultMessage"></p>
+          <div class="result-actions"><button id="playAgainBtn" class="primary-btn">🔄 NUEVA MISIÓN</button><button id="mapAgainBtn" class="ghost-btn">🪐 VOLVER AL MAPA</button></div>
+        </div>
+      </section>
+    </main>
+    <footer>LIMITVERSE 3.0 · Proyecto educativo de matemáticas · Límites · <span id="footerStatus">Sistema listo</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="game.js"></script>
+</body>
+</html>
